@@ -60,7 +60,7 @@ function ageInDays() {
       return[yourScore, computerScore];
   }
 
-  function finalMessage([yourScore, computerScore]) {
+  function finalMessage(yourScore) {
       if(yourScore === 0) {
           return{'message': 'You Lost :(', 'color': 'red'};
       } else if (yourScore === 0.5) {
@@ -97,5 +97,64 @@ function ageInDays() {
       document.getElementById('flex-box-rps-div').appendChild(botDiv);
   }
 
-  //challenge 4: changing colors
-  
+  //challenge 4: changing colors of buttons
+
+  var all_buttons = document.getElementsByTagName('button');
+
+  var copyAllButtons = [];
+  for(let i=0; i < all_buttons.length; i++) {
+      copyAllButtons.push(all_buttons[i].classList[1]);
+  }
+
+  function buttonColorChange(buttonThingy) {
+      if (buttonThingy.value === 'red') {
+          buttonsRed();
+      } else if(buttonThingy.value === 'green') {
+          buttonsGreen();
+      } else if(buttonThingy.value === 'reset') {
+          buttonsColorReset();
+        } else if(buttonThingy.value === 'yellow') {
+            buttonsYellow();
+      } else if(buttonThingy.value === 'random') {
+          randomColors();
+      }
+  }
+
+  function buttonsRed() {
+      for(let i=0; i < all_buttons.length; i++) {
+          all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+          all_buttons[i].classList.add('btn-danger');
+      }
+  }
+
+  function buttonsGreen() {
+    for(let i=0; i < all_buttons.length; i++) {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-success');
+    }
+}
+
+function buttonsYellow() {
+    for(let i=0; i < all_buttons.length; i++) {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-warning');
+    }
+}
+
+function buttonsColorReset() {
+    for(let i=0; i < all_buttons.length; i++) {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add(copyAllButtons[i]);
+    }
+}
+
+function randomColors() {
+    var choices = ['btn-danger', 'btn-success', 'btn-warning', 'btn-primary']
+    for(let i=0; i < all_buttons.length; i++) {
+    var randomNumber = Math.floor(Math.random() * 4);
+    all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+    all_buttons[i].classList.add(choices[randomNumber]);
+    }
+}
+
+
