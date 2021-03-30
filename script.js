@@ -96,3 +96,6 @@ function ageInDays() {
       document.getElementById('flex-box-rps-div').appendChild(messageDiv);
       document.getElementById('flex-box-rps-div').appendChild(botDiv);
   }
+
+  //challenge 4: changing colors
+  
